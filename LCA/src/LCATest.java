@@ -41,6 +41,30 @@ public class LCATest {
 	{
 		LCA<Integer, Integer> test = new LCA<Integer, Integer>();
 		test.put(4, 1);
-		assertNull(test.search(test.root, 4, 3)); //Testing for one of the nodes not existing
-		assertNull(test.search(test.root, 2, 8)); //Testing for both of the nodes not existing
+		assertNull(test.LCA(test.root, 4, 3)); //Testing for one of the nodes not existing
+		assertNull(test.LCA(test.root, 2, 8)); //Testing for both of the nodes not existing
 	}
+	@Test
+	public void testGet() {
+		LCA<Integer, Integer> LCA = new LCA<Integer, Integer>();
+		assertEquals(false, LCA.present(5)); //Empty tree
+		LCA.put(1, null);
+		LCA.put(10, 1);
+		LCA.put(5, 9);
+		LCA.put(15,2);
+		LCA.put(9, 15);	 
+
+		assertEquals("9", LCA.get(5).toString()); //Testing Left
+		assertEquals("2", LCA.get(15).toString()); //Testing right then right
+		assertEquals("15", LCA.get(9).toString()); //Testing tight then left
+		assertEquals("1", LCA.get(10).toString()); // Testing root
+	}
+	@Test
+	public void testPresent() {
+		LCA<Integer, Integer> LCA = new LCA<Integer, Integer>();
+		assertEquals(false, LCA.present(1)); //Not present
+		LCA.put(7, 7); 
+		assertEquals(true, LCA.present(7)); //present
+	}
+
+}
