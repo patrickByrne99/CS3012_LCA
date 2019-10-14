@@ -21,7 +21,7 @@ public class DAG {
 		{
 			throw new IllegalArgumentException("Number of vertices must be greater than 0");
 		}
-		n
+		
 		this.V = V;
 		this.E = 0;
 		indegree = new int[V];
