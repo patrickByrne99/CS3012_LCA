@@ -46,5 +46,45 @@ public class DAG {
 		return E;
 
 	}
+	
+	private int validateVertex(int v)
+	{
+		if(v < 0 || v >= V)
+		{
+			return -1;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	
+	//Returns number of directed edges to vertex v
+		public int indegree(int v)
+		{
+			if(validateVertex(v) > 0)
+			{
+				return indegree[v];
+			}
+			else
+			{
+				return -1;
+			}
+			
+		}
+		
+	
+		//Returns number of directed edges from vertex v
+		public int outdegree(int v)
+		{
+			if(validateVertex(v) > 0)
+			{
+				return adj[v].size();
+			}
+			else
+			{
+				return -1;
+			}
+		}
 
 }
