@@ -76,7 +76,6 @@ public class LCATest {
 		LCA.put(4, 4);     
 		LCA.put(5, 5);
 		
-
 		
 		
 		LCA.delete(10); assertEquals("(((()1(()2()))3((()4(()5()))6()))7(()8(()9())))", LCA.printKeysInOrder());
