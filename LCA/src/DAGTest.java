@@ -117,5 +117,47 @@ public class DAGTest {
 		graph.findCycle(1);
 		assertFalse(graph.hasCycle());
 	}
+	
+	@Test
+	public void testLCA(){
+		DAG LCA = new DAG(10);
+		
+		LCA.addEdge(0, 1);
+		LCA.addEdge(1, 2);
+		LCA.addEdge(1, 3);
+		LCA.addEdge(2, 5);
+		LCA.addEdge(3, 4);
+		LCA.addEdge(4, 6);
+		LCA.addEdge(5, 6);
+		LCA.addEdge(6, 8);
+		LCA.addEdge(5, 7);
+		LCA.addEdge(7, 8);
+		LCA.addEdge(8, 9);
+		
+		assertEquals(1, LCA.findLCA(5, 4)); //4 and 5
+		assertEquals(7, LCA.findLCA(8, 7)); //7 and 8
+		assertEquals(6, LCA.findLCA(6, 8)); //6 and 8
+		assertEquals(2, LCA.findLCA(2,2)); //where both parameters are same verteX
+	}
+	
+	@Test
+	public void testLCAForNoCommonAncestors(){
+		DAG LCA = new DAG(11);
+		
+		LCA.addEdge(0, 1);
+		LCA.addEdge(0, 2);
+		LCA.addEdge(1, 2);
+		LCA.addEdge(2, 3);
+		LCA.addEdge(3, 4);
+		LCA.addEdge(1, 5);
+		LCA.addEdge(3, 5);
+		
+		assertEquals(0, LCA.findLCA(3, 1));  //no LCA
+		assertEquals(2, LCA.findLCA(3, 2));
+		assertEquals(3, LCA.findLCA(4, 5));
+		
+		//Check for no common ancestors
+		assertEquals(-1, LCA.findLCA(7, 3)); //one node doesn't exist
+	}
 
 }
