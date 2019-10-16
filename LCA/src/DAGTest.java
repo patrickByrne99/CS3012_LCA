@@ -76,5 +76,35 @@ public class DAGTest {
 		DAG LCA = new DAG(5);
 		assertEquals(-1, LCA.outdegree(8));	
 	}
+	@Test
+	public void testAdj()
+	{
+		DAG graph = new DAG(5);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		graph.addEdge(4, 3);
+		
+		String adj = "[4]";
+		assertEquals(adj, graph.adj(2).toString());
+	}
+	
+	@Test
+	public void testforCycle()
+	{
+		DAG graph = new DAG(10);
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 0);
+		graph.addEdge(2, 3);
+		graph.addEdge(3, 4);
+		
+		graph.findCycle(0);
+		
+		assertTrue(graph.hasCycle());
+	}
+	
 
 }
