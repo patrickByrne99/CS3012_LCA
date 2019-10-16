@@ -95,23 +95,26 @@ public class LCATest {
 	}
 	
 	@Test
-	public void testLCA(){
-		LowComAnc test = new LowComAnc(10);
-		test.Edge(0, 1);  
-						  
-		test.Edge(0, 3);
-		test.Edge(1, 2);
-		test.Edge(3, 2);
-		test.Edge(3, 5);
-		test.Edge(5, 7);
-		test.Edge(2, 9);
+	public void testLCA() {
 		
+		LCA<Integer, Integer> bst = new LCA<Integer, Integer>();
 		
-		assertEquals("[3, 0]", test.LCA(5, 2).toString());
-	    assertEquals("[0]", test.LCA(1, 3).toString());
-	    assertEquals("[1]", test.LCA(1, 2).toString());
-	    assertEquals("[3, 0]", test.LCA(7, 9).toString());
+		assertSame("Testing LCA for null root", null, bst.LCA(bst.root, 1, 2));
+		
+		bst.put(7, 7);
+		bst.put(8, 8);   
+		bst.put(3, 3);   
+		bst.put(1, 1);   
+		bst.put(2, 2);  
+		bst.put(6, 6);   
+		bst.put(4, 4); 
+		bst.put(5, 5);  		 	
+		assertSame("Testing LCA left side", 3, bst.LCA(bst.root, 2,6));
+		assertSame("Testing LCA right side", 7, bst.LCA(bst.root, 8,3));
+		assertSame("Testing LCA where LCA is one of the nodes", 7, bst.LCA(bst.root, 7,8));
+		assertSame("Testing LCA where LCA is one of the nodes", 7, bst.LCA(bst.root, 3,7));
 	}
+
 	
 	
 	
