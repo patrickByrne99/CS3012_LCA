@@ -159,5 +159,33 @@ public class DAGTest {
 		//Check for no common ancestors
 		assertEquals(-1, LCA.findLCA(7, 3)); //one node doesn't exist
 	}
+	
+	@Test
+	public void testLCAForEmptyDAG()
+	{
+		DAG graph = new DAG(5);
+		assertEquals(-1, graph.findLCA(0, 2));
+		assertEquals(-1, graph.findLCA(0, 4));
+		assertEquals(-1, graph.findLCA(0, 0));
+	}
+	
+	@Test
+	public void testLCAForNonDAG()
+	{
+		DAG graph = new DAG(10);
+		
+		graph.addEdge(0, 1);
+		graph.addEdge(0, 3);
+		graph.addEdge(3, 2);
+		graph.addEdge(2, 0);
+		graph.addEdge(2, 4);
+		
+		assertEquals(-1, graph.findLCA(3, 2));
+		assertEquals(-1, graph.findLCA(2, 4));
+		assertEquals(-1, graph.findLCA(1, 3));
+		assertEquals(-1, graph.findLCA(0, 3));
+		assertEquals(-1, graph.findLCA(1, 2));
+		
+	}
 
 }
