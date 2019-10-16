@@ -105,6 +105,17 @@ public class DAGTest {
 		
 		assertTrue(graph.hasCycle());
 	}
-	
+	@Test
+	public void testAcyclicGraph()
+	{
+		DAG graph = new DAG(10);
+		
+		graph.addEdge(1, 2);
+		graph.addEdge(2, 4);
+		graph.addEdge(3, 3);
+		
+		graph.findCycle(1);
+		assertFalse(graph.hasCycle());
+	}
 
 }
