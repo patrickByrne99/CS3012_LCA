@@ -88,9 +88,6 @@ public class LCATest {
 		assertEquals("(((()1(()2()))3((()4())6()))7(()9()))", LCA.printKeysInOrder());
 		//Deleting node with one child
 		
-		LCA.delete(3);
-		assertEquals("(((()1())2(()4(()6())))7(()9()))", LCA.printKeysInOrder());
-		//Deleting node with two children ****
 	
 	}
 	
